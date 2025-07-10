@@ -1,0 +1,47 @@
+@use  '../styles/variables' 
+
+.app-header
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 100px
+    a
+        display: block
+        width: 220px
+        z-index: 2
+    img
+        overflow: hidden
+
+.nav
+    position: absolute
+    top: 0
+    right: 0
+    left: 0
+    display: flex
+    justify-content: space-between
+
+.icon-div
+    display: inline-block
+    padding: 0.3rem
+    border-radius: 15px
+    background-color: rgba(148, 148, 148, 0.475)
+    transition: background-color 0.2s ease
+    cursor: pointer
+    margin: 10px
+
+    &:hover
+        background-color: rgba(251, 251, 251, 0.177)
+
+    img
+        width: 40px
+        display: block
+
+.app-footer
+    text-align: center
+
+@media (min-width: 1000px)
+    .icon-div
+        margin: 15px
+        img
+            width: 50px

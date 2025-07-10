@@ -1,0 +1,110 @@
+@use '../../styles/variables' 
+
+.video-wrapper
+    position: relative
+    height: 87vh
+    width: 100%
+    overflow: hidden
+
+    .video
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%) scale(1.8)
+        object-fit: cover
+
+    .timer-div
+        position: absolute
+        top: 10%
+        left: 50%
+        transform: translate(-50%, -50%)
+        color: white
+        z-index: 10
+
+        p
+            font-size: 2rem
+            letter-spacing: 5px
+    .rules-div
+        position: absolute
+        top: 32%
+        left: 50%
+        transform: translate(-50%, -50%)
+        max-width: 420px
+        cursor: pointer
+        &:hover
+            .rules-content
+                display: block
+            .usage-rules-h4
+                display: none
+        .rules-content
+            display: none
+            background-color: rgba(113, 113, 113, 0.773)
+            padding: 1rem
+            border-radius: 20px
+            font-size: 0.7rem
+            text-align: center
+    .usage-rules-h4
+        color: variables.$accent
+        font-size: 0.8rem
+        text-transform: uppercase
+        text-align: center
+
+    .start-div
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+
+        .start-btn
+            background-color: variables.$accent
+            padding: 0.4rem 4rem
+            border-radius: 20px
+            font-size: 1.6rem
+            font-weight: 500
+            text-align: center
+            text-transform: uppercase
+            outline: 1px solid white
+            outline-offset: -3px
+            letter-spacing: 5px
+
+            &:hover
+                outline: 1px solid variables.$accent
+                outline-offset: 3px
+                background-color: variables.$accent-hover
+
+    @media (min-width: 768px)
+        .video
+            top: 60%
+            transform: translate(-50%, -50%) scale(1.3)
+        .start-div
+            top: 60%
+            .start-btn
+                padding: 1rem 7rem
+                font-size: 2.6rem
+
+        .timer-div
+            p
+                font-size: 2.6rem
+
+    @media (min-width: 1000px)
+        .video
+            top: 70%
+            transform: translate(-50%, -50%) scale(1)
+        .start-div
+            top: 70%
+    @media (min-width: 1200px)
+        .video
+            transform: translate(-50%, -50%) scale(1)
+        .start-div
+            .start-btn
+                padding: 1.8rem 10rem
+                font-size: 3rem
+
+        .timer-div
+            p
+                font-size: 3rem
+
+.transcript
+    color: white
+    position: absolute
+    bottom: 0

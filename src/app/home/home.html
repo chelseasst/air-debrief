@@ -1,0 +1,32 @@
+<div class="home-container">
+    <div class="video-wrapper">
+        <video #video class="video" muted loop playsinline>
+            <source src="assets/home-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="timer-div">
+            <p>{{timer()}}</p>
+        </div>
+        <div class="rules-div">
+            <h4 class="usage-rules-h4">Usage rules</h4>
+            <div class="rules-content">
+                <p>Press Start and start talking about the flight. The AI asistant will listen and when you press Stop,
+                    it'll create a report for you.</p>
+                <ul>
+                    <li>Wait a few seconds after you press Stop.</li>
+                    <li>Don't click stop several times, AI is working.</li>
+                    <li>The report is kept until you refresh the page.</li>
+                    <li>If unsatisfied with the report, try again.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="start-div">
+            @if(transcriptService.listening()){
+            <button class="start-btn" (click)="stop()">Stop</button>
+            } @else {
+            <button class="start-btn" (click)="start()">Start</button>
+            }
+        </div>
+    </div>
+</div>

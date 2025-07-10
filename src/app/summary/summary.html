@@ -1,0 +1,29 @@
+<div class="summary-container">
+   @if(!error){
+    <section class="wins">
+        <h4>Wins</h4>
+        @for (win of final.wins; track win) {
+        <li>{{ win }}</li>
+        } @empty {
+        <li>No wins :(</li>
+        }
+    </section>
+    <section class="mistakes">
+        <h4>Mistakes</h4>
+        @for (mistake of final.mistakes; track mistake){
+        <li>{{mistake}}</li>
+        } @empty {
+        <li>No mistakes :)</li>
+        }
+    </section>
+    <section class="summary">
+        <h4>Summary</h4>
+        <p>{{final.summary}}</p>
+    </section>
+   } @else {
+    <section class="error">
+     <p>{{error}}</p>
+    </section>
+   }
+  
+</div>

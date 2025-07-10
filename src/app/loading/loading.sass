@@ -1,0 +1,63 @@
+.loading-container
+    position: relative
+    height: 87vh
+    width: 100%
+    overflow: hidden
+
+.preparing
+    position: absolute
+    top: 40%
+    left: 50%
+    transform: translate(-50%, -50%)
+    p
+        text-align: center
+        line-height: 2
+
+.plane-wrapper
+    position: absolute
+    bottom: 10%
+    left: 20%
+    transform: translateX(-50%)
+
+.plane-img
+    width: 100px
+    animation: planeBump 0.6s ease-in-out infinite
+    transition: transform 1s ease-out
+    will-change: transform
+
+.plane-img.takeoff
+    animation: planeTakeoffSmall 3s ease forwards
+
+//Plane Animations
+@keyframes planeBump
+    0%, 100%
+        transform: translateY(0)
+    50%
+        transform: translateY(-20px)
+
+@keyframes planeTakeoffSmall
+    0%
+        transform: rotate(0) translate(0, 0) scale(1)
+        opacity: 1
+
+    100%
+        transform: rotate(-10deg) translate(400px, -600px) scale(1.5)
+        opacity: 0
+
+@keyframes planeTakeoffLarge
+    0%
+        transform: rotate(0) translate(0, 0) scale(1)
+        opacity: 1
+
+    100%
+        transform: rotate(-10deg) translate(1000px, -1000px) scale(1.5)
+        opacity: 0
+
+@media (min-width: 1000px)
+    .plane-img.takeoff
+        animation: planeTakeoffLarge 3s ease forwards
+
+@media (min-width: 768px)
+    .preparing
+    p
+        font-size: 1.3rem

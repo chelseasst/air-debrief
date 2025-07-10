@@ -1,5 +1,6 @@
 import { effect, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,7 @@ export class Transrcipt {
     }
     setTimeout(async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/analyze', {
+        const response = await fetch(`${environment.apiUrl}/api/analyze`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ transcript: transcript })

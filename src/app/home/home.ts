@@ -13,6 +13,7 @@ export class Home {
   timer = signal('00:00:00');
   private startTime: number = 0;
   private intervalId: any;
+  private stopTriggered = false
 
   @ViewChild('video') video!: ElementRef<HTMLVideoElement>;
   constructor(public transcriptService: Transrcipt) { }
@@ -50,6 +51,8 @@ export class Home {
     });
   }
   async stop() {
+    if (this.stopTriggered === true) return
+    this.stopTriggered = true
     this.stopTimer();
     this.transcriptService.stop();
   }

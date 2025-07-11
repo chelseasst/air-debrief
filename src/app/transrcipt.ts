@@ -109,7 +109,9 @@ export class Transrcipt {
     this.recognition = recognizer;
   }
   stop() {
+    console.log('Stop function')
     setTimeout(() => {
+      console.log('STOP');
       if (this.recognition) {
         this.loading.set(true);
         this.recognition.stop();

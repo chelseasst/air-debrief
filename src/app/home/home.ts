@@ -14,6 +14,7 @@ export class Home {
   private startTime: number = 0;
   private intervalId: any;
   private stopTriggered = false
+  rulesVisible: boolean = false;
 
   @ViewChild('video') video!: ElementRef<HTMLVideoElement>;
   constructor(public transcriptService: Transrcipt) { }
@@ -55,6 +56,13 @@ export class Home {
     this.stopTriggered = true
     this.stopTimer();
     this.transcriptService.stop();
+  }
+  toggleRulesOpen(event: Event): void {
+    event.stopPropagation(); //stops the event from reaching the parent
+    this.rulesVisible = true;
+  }
+  toggleRulesClose(): void {
+    this.rulesVisible = false;
   }
 }
 

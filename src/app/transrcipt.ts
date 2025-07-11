@@ -15,6 +15,7 @@ export class Transrcipt {
   listening = signal(false);
   loading = signal(false);
   hasSummary = signal(false);
+  takeoff = signal(false);
 
   recognition: SpeechRecognition | null = null;
   transcript = signal('');
@@ -24,7 +25,10 @@ export class Transrcipt {
       if (this.loading()) {
         this.router.navigate(['/loading']);
       } else if (this.hasSummary()) {
-        this.router.navigate(['/summary']);
+        this.takeoff.set(true);
+        setTimeout(() => {
+          this.router.navigate(['/summary']);
+        }, 2000)
       } else {
         this.router.navigate(['/']);
       }
@@ -35,30 +39,28 @@ export class Transrcipt {
       console.warn('Transcript was empty — skipping AI request');
       return;
     }
-    setTimeout(async () => {
-      try {
-        const response = await fetch(`${environment.apiUrl}/api/analyze`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ transcript: transcript })
-        });
+    try {
+      const response = await fetch(`${environment.apiUrl}/api/analyze`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ transcript: transcript })
+      });
 
-        const result = await response.json();
+      const result = await response.json();
 
-        this.hasSummary.set(true);
-        this.final.set(result.analysis); //{wins, mistakes, summary}
-      } catch (error) {
-        this.hasSummary.set(true);
-        this.final.set({
-          wins: [],
-          mistakes: [],
-          summary: '',
-          error: 'Server error. Please try again.'
-        });
-      } finally {
-        this.loading.set(false);
-      }
-    }, 2000)
+      this.hasSummary.set(true);
+      this.final.set(result.analysis); //{wins, mistakes, summary}
+    } catch (error) {
+      this.hasSummary.set(true);
+      this.final.set({
+        wins: [],
+        mistakes: [],
+        summary: '',
+        error: 'Server error. Please try again.'
+      });
+    } finally {
+      this.loading.set(false);
+    }
   }
   listen() {
     this.listening.set(true);
@@ -89,7 +91,6 @@ export class Transrcipt {
         }
       }
       if (finalText) {
-        console.log('✅ Final recognized text:', finalText);
         this.transcript.update((prev) => prev + finalText);
       }
     };
@@ -109,9 +110,7 @@ export class Transrcipt {
     this.recognition = recognizer;
   }
   stop() {
-    console.log('Stop function')
     setTimeout(() => {
-      console.log('STOP');
       if (this.recognition) {
         this.loading.set(true);
         this.recognition.stop();

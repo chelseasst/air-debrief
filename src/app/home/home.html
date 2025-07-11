@@ -1,4 +1,4 @@
-<div class="home-container">
+<div class="home-container" (click)="toggleRulesClose()">
     <div class="video-wrapper">
         <video #video class="video" muted loop playsinline autoplay preload="auto">
             <source src="assets/home-video.mp4" type="video/mp4" />
@@ -8,8 +8,8 @@
         <div class="timer-div">
             <p>{{timer()}}</p>
         </div>
-        <div class="rules-div">
-            <h4 class="usage-rules-h4">Usage rules</h4>
+        <div class="rules-div" [class.active]="rulesVisible">
+            <h4 class="usage-rules-h4" (click)="toggleRulesOpen($event)">Usage rules</h4>
             <div class="rules-content">
                 <p>Press Start and start talking about the flight. The AI asistant will listen and when you press Stop,
                     it'll create a report for you.</p>

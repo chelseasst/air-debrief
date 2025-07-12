@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, signal, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Transrcipt } from '../transrcipt';
+import { Transcript } from '../transcript';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +17,7 @@ export class Home {
   rulesVisible: boolean = false;
 
   @ViewChild('video') video!: ElementRef<HTMLVideoElement>;
-  constructor(public transcriptService: Transrcipt) { }
+  constructor(public transcriptService: Transcript) { }
 
   start() {
     this.playVideo();

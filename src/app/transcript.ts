@@ -5,7 +5,7 @@ import { environment } from '../environments/environment'
 @Injectable({
   providedIn: 'root'
 })
-export class Transrcipt {
+export class Transcript {
   final = signal<{ wins: string[]; mistakes: string[]; summary: string; error: string | null }>({
     wins: [],
     mistakes: [],
@@ -135,4 +135,4 @@ export class Transrcipt {
       }
     }, 3000)
   }
-}
+} 

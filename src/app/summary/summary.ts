@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Transrcipt } from '../transrcipt';
+import { Transcript } from '../transcript';
 
 @Component({
   selector: 'app-summary',
@@ -12,7 +12,7 @@ import { Transrcipt } from '../transrcipt';
 export class Summary {
   error: string | null = null;
   final!: { wins: string[], mistakes: string[], summary: string, error: null | string };
-  constructor(public transcriptService: Transrcipt) { }
+  constructor(public transcriptService: Transcript) { }
 
   ngOnInit() {
     if (this.transcriptService.final().error) {

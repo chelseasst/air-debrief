@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Transrcipt } from '../transrcipt';
+import { Transcript } from '../transcript';
 
 @Component({
   selector: 'app-loading',
@@ -11,5 +11,5 @@ import { Transrcipt } from '../transrcipt';
 })
 export class Loading {
   @ViewChild('planeImg') planeImg!: ElementRef
-  constructor(private renderer: Renderer2, public transcriptService:Transrcipt) { }
+  constructor(private renderer: Renderer2, public transcriptService: Transcript) { }
 }

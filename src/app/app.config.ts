@@ -1,11 +1,13 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
+  providers: [ //defines global services for the app
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
+    provideRouter(routes) //inject the routes into the app
   ]
 };
+//No need to import RouterModule.forRoot(routes) anymore
+//All components that need routing, can access this one
